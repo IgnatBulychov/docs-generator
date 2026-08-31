@@ -1,0 +1,62 @@
+{
+  "pages": {
+    "index": {
+      "title": "Batch Editing of Office Documents",
+      "subtitle": "Need to create many documents from a template?",
+      "subtitleLine2": "Just pick your template, upload a data table, and generate all the files in one click!",
+      "subtitleLine3": "No more manual work!"
+    }
+  },
+  "languageSwitcher": {
+    "label": "Language"
+  },
+  "benefits": {
+    "speed": {
+      "title": "Speed",
+      "description": "Generate a large batch of files in seconds."
+    },
+    "privacy": {
+      "title": "Full Privacy",
+      "description": "Your files never leave your device — everything is processed entirely in your browser."
+    },
+    "flexibility": {
+      "title": "Flexibility",
+      "description": "Add as many variables as you need and define a naming pattern for your output files."
+    }
+  },
+  "steps": {
+    "heading": "How it works:",
+    "step1": {
+      "title": "Prepare your template",
+      "description": "Mark the data you want to insert automatically. Place variables like {'{'}Name{'}'}, {'{'}Number{'}'}, {'{'}Date{'}'} wherever they should appear in the document."
+    },
+    "step2": {
+      "title": "Fill in the table",
+      "description": "Create an Excel table with the data for your documents and name the column headers exactly like the variables in your template. Note: all fields in the file must be text."
+    },
+    "step3": {
+      "title": "Generate the documents",
+      "description": "Set the naming pattern for your files, click “Generate documents”, and save the Zip folder to your computer."
+    }
+  },
+  "generator": {
+    "template": {
+      "uploadText": "Click to select or drag a template here",
+      "uploadHint": "The template file must be in .doc or .docx format"
+    },
+    "table": {
+      "uploadText": "Click to select or drag a data table here",
+      "uploadHint": "The table must be in .xls or .xlsx format"
+    },
+    "additionalSettings": "Additional settings",
+    "uniqueField": "Choose a unique field for document names:",
+    "manualMask": "Or set a document naming pattern manually:",
+    "maskPlaceholder": "e.g. Document №{'Document Number'} dated {'Date'}",
+    "warning": "Note: if document names are not unique, files with the same name will be overwritten. If a document name contains a slash, matching subfolders will be created.",
+    "delimitersLabel": "Variable delimiters in the document template:",
+    "tagStartPlaceholder": "Variable start symbol",
+    "tagEndPlaceholder": "Variable end symbol",
+    "generateButton": "Generate documents"
+  },
+  "zipFilename": "Documents"
+}

@@ -1,57 +1,127 @@
-<script setup lang="ts">
-import Excel from './icons/excel.vue'
-import Result from './icons/result.vue'
-import Template from './icons/template.vue'
+<script setup>
+import { useI18n } from "vue-i18n";
+
+const { t, locale } = useI18n();
+
+const steps = [
+  {
+    number: "1",
+    image: "template.svg",
+    titleKey: "steps.step1.title",
+    descKey: "steps.step1.description",
+  },
+  {
+    number: "2",
+    image: "excel.svg",
+    titleKey: "steps.step2.title",
+    descKey: "steps.step2.description",
+  },
+  {
+    number: "3",
+    image: "result.svg",
+    titleKey: "steps.step3.title",
+    descKey: "steps.step3.description",
+  },
+];
 </script>
 
 <template>
-  <div class="mb-6 mt-12 text-center">Как это сделать:</div>
+  <div class="steps-heading">{{ t("steps.heading") }}</div>
 
   <div class="mt-8 flex flex-col gap-6">
-    <div
-      class="rounded-lg border border-gray-200 p-6 overflow-hidden bg-gray-50 flex flex-col md:flex-row items-center justify-center"
-    >
-      <div class="font-semibold text-5xl text-gray-200">1</div>
+    <div v-for="step in steps" :key="step.number" class="step-card">
+      <div class="step-number">{{ step.number }}</div>
 
-      <div class="mb-6 p-4 md:w-1/2 flex justify-center">
-        <Template />
+      <div class="step-image">
+        <img :src="`/images/steps/${locale}/${step.image}`" :alt="t(step.titleKey)" />
       </div>
 
-      <p class="mt-2 text-pretty text-gray-700 flex-1">
-        Укажите в вашем шаблоне данные, которые хотите вставить в документ автоматически. Вставьте в
-        нужные места документа пременные в виде {Имя}, {Номер}, {Дата} и так далее.
-      </p>
-    </div>
-
-    <div
-      class="rounded-lg border border-gray-200 p-6 overflow-hidden bg-gray-50 flex flex-col md:flex-row items-center justify-center"
-    >
-      <div class="font-semibold text-5xl text-gray-200">2</div>
-
-      <div class="mb-6 p-4 md:w-1/2 flex justify-center">
-        <Excel />
+      <div class="flex-1">
+        <h3 class="step-title">{{ t(step.titleKey) }}</h3>
+        <p class="step-desc">{{ t(step.descKey) }}</p>
       </div>
-
-      <p class="mt-2 text-pretty text-gray-700 flex-1">
-        Сформируйте Excel таблицу в котрой будет список данных для будущих документов, назовите
-        заголовки точно так же как переменные в шаблоне. Внимание: все поля в файле должны быть
-        текстовыми.
-      </p>
-    </div>
-
-    <div
-      class="rounded-lg border border-gray-200 p-6 overflow-hidden bg-gray-50 flex flex-col md:flex-row items-center justify-center"
-    >
-      <div class="font-semibold text-5xl text-gray-200">3</div>
-
-      <div class="mb-6 p-4 md:w-1/2 flex justify-center">
-        <Result />
-      </div>
-
-      <p class="mt-2 text-pretty text-gray-700 flex-1">
-        Укажите по какому принципу следует сформировать названия для файлов, нажмите "Сгенерировать
-        документы" и сохраните Zip-папку себе на компьютер.
-      </p>
     </div>
   </div>
 </template>
+
+<style scoped>
+.steps-heading {
+  margin: 3rem 0 1.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.step-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 2rem;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 8px 24px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #9ca3af;
+  font-size: 1.25rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-image {
+  padding: 1rem;
+  width: 100%;
+  max-width: 24rem;
+  display: flex;
+  justify-content: center;
+}
+
+.step-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.step-desc {
+  margin-top: 0.5rem;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+@media (min-width: 768px) {
+  .step-card {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
+
+  .step-image {
+    width: 50%;
+    max-width: none;
+  }
+}
+</style>
