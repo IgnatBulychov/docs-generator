@@ -1,9 +1,9 @@
 <script setup>
 import { useI18n } from "vue-i18n";
 import { setLocale } from "@/locales/index.js";
-import Benefits from "@/components/Benefits.vue";
-import Steps from "@/components/Steps.vue";
-import DocGenerator from "@/components/DocGenerator.vue";
+import Benefits from "@/components/landing/Benefits.vue";
+import Steps from "@/components/landing/Steps.vue";
+import DocGenerator from "@/components/app/DocGenerator.vue";
 
 const { t, locale } = useI18n();
 
